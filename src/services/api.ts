@@ -1,9 +1,9 @@
-import { CovidByProvince } from "../models/user";
+import { Station } from "../models/user";
 import apiClient from "./api/http-common";
 
-export const getAll = async (): Promise<CovidByProvince[]> => {
-  const res = await apiClient.get("/Cases/today-cases-by-provinces");
-  return res.data as CovidByProvince[];
+export const getAll = async (): Promise<Station[]> => {
+  const res = await apiClient.get("/stations");
+  return res.data as Station[];
 };
 
 export const getCurrentTime = (): Promise<number> => {

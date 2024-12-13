@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { useQuery } from "react-query";
 import { CovidPage } from "./components/CovidPage";
-import { CovidByProvince } from "./models/user";
+import { CovidByProvince, Station } from "./models/user";
 import { getAll, getCurrentTime } from "./services/api";
 import { LoadingOutlined } from "@ant-design/icons";
+import { Button } from 'antd';
+import { StationPage } from './components/StationPage';
+
 const App = () => {
     //const [result, setResult] = useState<CovidByProvince[]>([])
 
@@ -18,7 +21,7 @@ const App = () => {
         refetch: getData,
         data: result,
         isError
-    } = useQuery<CovidByProvince[]>(["summary"], getAll, {
+    } = useQuery<Station[]>(["summary"], getAll, {
         enabled: true,
         refetchIntervalInBackground: false,
         //initialData: [],
@@ -52,8 +55,8 @@ const App = () => {
     return (
         <div className="App">
             {isLoadingData && <LoadingOutlined/>}
-            {/*<Button onClick={getAllData}>Force Get Data</Button>*/}
-            {result && <CovidPage data={result} setEnabled={setIsEnabled} isEnabled={isEnabled}/>}
+            <Button onClick={getAllData}>Force Get Data</Button>
+            {result && <StationPage data={result} setEnabled={setIsEnabled}/>}
         </div>
     );
 }
