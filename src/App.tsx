@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import {useQuery} from "react-query";
-import {CovidPage} from "./components/CovidPage";
-import {CovidByProvince} from "./models/user";
-import {getAll, getCurrentTime} from "./services/api";
-import {LoadingOutlined} from "@ant-design/icons";
-import {Button} from "antd";
+import { useQuery } from "react-query";
+import { CovidPage } from "./components/CovidPage";
+import { CovidByProvince } from "./models/user";
+import { getAll, getCurrentTime } from "./services/api";
+import { LoadingOutlined } from "@ant-design/icons";
 const App = () => {
     //const [result, setResult] = useState<CovidByProvince[]>([])
 
