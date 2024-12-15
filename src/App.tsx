@@ -1,25 +1,10 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Select, Card, Row, Col, Spin, Alert } from "antd";
-import axios from "axios";
 import { Station, StationValue } from "./models/user";
 import { StationService } from "./services/api";
 
 // Function to fetch stations
-const fetchStations = async (): Promise<Station[]> => {
-  const response = await StationService.getAll();
-  return response;
-};
-
-// Function to fetch air quality data for a specific station
-const fetchAirQualityData = async (
-  dustboyId: string
-): Promise<StationValue> => {
-  const response = await axios.get(
-    `https://www.cmuccdc.org/api/ccdc/value/${dustboyId}`
-  );
-  return response.data;
-};
 
 const AirQualityMonitor: React.FC = () => {
   const [selectedStation, setSelectedStation] = useState<string | null>(null);
